@@ -1,18 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CEP</title>
-    <script src="http://cdn.tailwindcss.com"></script>
+    <title>Buscador de CEP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+       <script type="module" src="./CEP/js/script.js"></script>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4">
-    
-    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full m-w-md">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
         <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-indigo-600 mb-2">Buscador de CEP</h1>
-        <p></p>
+            <h1 class="text-3xl font-bold text-indigo-600 mb-2">Buscador de CEP</h1>
+            <p class="text-gray-600">Consulte endereços pelo CEP</p>
+        </div>
+
+        <div class="mb-6">
+            <label for="cep" class="block text-sm font-medium text-gray-700 mb-2">
+                Digite o CEP
+            </label>
+            <div class="flex gap-2">
+                <input 
+                    type="text" 
+                    id="cep" 
+                    placeholder="00000-000"
+                    maxlength="9"
+                    class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition"
+                />
+                <button 
+                    id="buscarBtn"
+                    class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium"
+                >
+                    Buscar
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">Formato: 12345-678 ou 12345678</p>
+        </div>
+
+        <div id="loading" class="hidden text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-indigo-600 border-t-transparent"></div>
+            <p class="text-gray-600 mt-4">Buscando...</p>
+        </div>
+
+        <div id="erro" class="hidden bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+            <p class="text-red-800 font-medium" id="mensagemErro"></p>
+        </div>
+
+        <div id="resultado" class="hidden space-y-3">
+            <div class="bg-indigo-50 rounded-lg p-4">
+                <h3 class="text-sm font-medium text-indigo-900 mb-3">Endereço encontrado:</h3>
+                
+                <div class="space-y-2">
+                    <div class="flex justify-between border-b border-indigo-200 pb-2">
+                        <span class="text-gray-600">CEP:</span>
+                        <span class="font-medium text-gray-900" id="cepResultado"></span>
+                    </div>
+                    <div class="flex justify-between border-b border-indigo-200 pb-2">
+                        <span class="text-gray-600">Logradouro:</span>
+                        <span class="font-medium text-gray-900" id="logradouro"></span>
+                    </div>
+                    <div class="flex justify-between border-b border-indigo-200 pb-2">
+                        <span class="text-gray-600">Bairro:</span>
+                        <span class="font-medium text-gray-900" id="bairro"></span>
+                    </div>
+                    <div class="flex justify-between border-b border-indigo-200 pb-2">
+                        <span class="text-gray-600">Cidade:</span>
+                        <span class="font-medium text-gray-900" id="cidade"></span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Estado:</span>
+                        <span class="font-medium text-gray-900" id="estado"></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script type="module" src="./script.js"></script>
+        
 </body>
-</html>
